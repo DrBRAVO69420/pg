@@ -1,0 +1,43 @@
+/*Write a C program for drawing a vertical histogram depicting the production of cars in a manufacturing
+company for four different years.*/
+#include<stdio.h>
+#include<graphics.h>
+#include<math.h>
+void bargraph(int p[])
+{
+	int i,left,top,wide,bottom,deep,qty,j;
+	static char label[4][5]={"2012","2013","2014","2015"};
+	char str[5];
+	setfillstyle(SOLID_FILL,BLUE);
+	wide=30;
+	bottom=getmaxy()-40;
+	deep=7;
+	left=wide;
+	for(i=0;i<4;i++)
+	{
+		top=(bottom)-(p[i]*5);
+		bar3d(left,top,(left+wide),bottom,deep,1);
+		outtextxy(left,460,label[i]);
+		itoa(p[i],str,10);
+		outtextxy((left+5),(top-15),str);
+		left=left+(wide*2);
+	}
+}
+
+void main()
+{
+	int i,qty[4],j=2011;
+	int gd=DETECT,gm;
+	initgraph(&gd,&gm,"C://TURBOC3//BGI");
+	
+	for(i=0;i<4;i++)
+	{
+		j++;
+		printf("\n Enter the quantity of cars produced in year %d between 0 & 50",j);
+		scanf("%d",&qty[i]);
+	}
+	bargraph(qty);
+	getch();
+	closegraph();
+}
+

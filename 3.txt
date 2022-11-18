@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include<math.h>
+void main()
+{
+int xc=340,yc=280,y,r,x;
+float theta;
+int gd=DETECT,gm;
+initgraph(&gd,&gm,"C:\\turboc3\\BGI");
+//printf�Enter the center of circle:�;
+//scanf("%d%d",&xc,&yc);
+printf("Enter radius of circle:");
+scanf("%d",&r);
+for(theta=0;theta<=2*3.14;theta+=0.01)
+{
+	x=(int)(xc+(r*cos(theta)));
+	y=(int)(yc+(r*sin(theta)));
+	putpixel(x,y,WHITE);
+}
+	getch();
+	closegraph();
+}

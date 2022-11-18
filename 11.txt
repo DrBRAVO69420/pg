@@ -1,0 +1,29 @@
+#include<windows.h>
+#include<GL/glut.h>
+#include<stdlib.h>
+
+void display(void)
+{ 
+
+glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+glColor3d(1,0,0); 
+
+glPushMatrix();
+ glTranslated(0.0,-1.2,-6);
+glutWireSphere(1,16,16);
+glPopMatrix(); 
+glutSwapBuffers();//swap the buffer of the current window
+} 
+int main(int argc, char *argv[])
+{
+glutInit(&argc, argv);
+glutInitWindowSize(1200,1000);
+glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH); 
+glutCreateWindow("3D WIREFRAME SPHERE....."); 
+glutDisplayFunc(display); 
+glClearColor(1,1,1,1);
+
+glFrustum(-1.0, 1.0, -1.0, 1.0, 2.0, 100.0); 
+
+glutMainLoop(); 
+ }

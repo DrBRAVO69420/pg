@@ -1,0 +1,106 @@
+#include<stdio.h>
+#include<graphics.h>
+#include<stdlib.h>
+#include<conio.h>	
+#include<math.h>
+void main()
+{
+	int gd=DETECT,gm;
+	int x1,x2,x3,y1,y2,y3,nx1,nx2,nx3,ny1,ny2,ny3,c,sx,sy,xt,yt,r,p,q;
+	float t,Angle;
+	char ch,y;
+	clrscr();
+	initgraph(&gd,&gm,"C:\\Turboc3\\BGI");
+	printf("\t PROGRAM FOR BASIC TRANSFORMATION");
+	printf("\n Enter the points of triangle\n");
+	scanf("%d %d %d %d %d %d",&x1,&y1,&x2,&y2,&x3,&y3);
+	line(x1,y1,x2,y2);
+	line(x2,y2,x3,y3);
+	line(x3,y3,x1,y1);
+	getch();
+	ch='y';
+	while(ch=='y')
+	{
+		printf("\n select the transformation\n");
+		printf("1. Translation \n 2. Rotation \n 3.Scaling \n 4. Exit\n");
+		printf("Enter your choice");
+		scanf("%d",&c);
+		switch(c)
+		{
+			case 1:
+				cleardevice();
+				printf("\n Enter the translation factor\n ");
+				scanf("%d %d",&xt,&yt);
+				 nx1=x1+xt;
+				 ny1=y1+yt;
+				 nx2=x2+xt;
+				 ny2=y2+yt;
+				 nx3=x3+xt;
+				 ny3=y3+yt;
+				cleardevice();
+				line(x1,y1,x2,y2);
+				line(x2,y2,x3,y3);
+				line(x3,y3,x1,y1);
+				line(nx1,ny1,nx2,ny2);
+				line(nx2,ny2,nx3,ny3);
+				line(nx3,ny3,nx1,ny1);
+				getch();
+				break;
+			case 2:
+				cleardevice();
+				printf("\n Enter the angle of rotation\n");
+				scanf("%d",&r);
+				Angle=3.14*r/180;
+				//t=Angle;
+				p=x2;q=y2;
+				nx1 = p + (x1 - p) * cos(Angle)-(y1 - q) * sin(Angle);
+				ny1 = q + (x1 - p) * sin(Angle)+(y1 - q) * cos(Angle);
+				nx2 = p + (x2 - p) * cos(Angle)-(y2 - q) * sin(Angle);
+				ny2 = q + (x2 - p) * sin(Angle)+(y2 - q) * cos(Angle);
+				nx3 = p + (x3 - p) * cos(Angle)-(y3 - q) * sin(Angle);
+				ny3 = q + (x3 - p) * sin(Angle)+(y3 - q) * cos(Angle);
+				//nx1=abs(x1*cos(t)-y1*sin(t));
+				//ny1=abs(x1*sin(t)+y1*cos(t));
+				//nx2=abs(x2*cos(t)-y2*sin(t));
+				//ny2=abs(x2*sin(t)+y2*cos(t));
+				//nx3=abs(x3*cos(t)-y3*sin(t));
+				//ny3=abs(x3*sin(t)+y3*cos(t));
+				cleardevice();
+				line(x1,y1,x2,y2);
+				line(x2,y2,x3,y3);
+				line(x3,y3,x1,y1);
+				line(nx1,ny1,nx2,ny2);
+				line(nx2,ny2,nx3,ny3);
+				line(nx3,ny3,nx1,ny1);
+				getch();
+				break;
+			case 3:
+				cleardevice();
+					printf("Enter the scaling factor\n");
+				scanf("%d %d",&sx,&sy);
+				nx1=x1*sx;
+				ny1=y1*sy;
+				nx2=x2*sx;
+				ny2=y2*sy;
+				nx3=x3*sx;
+				ny3=y3*sy;
+				cleardevice();
+				line(x1,y1,x2,y2);
+				line(x2,y2,x3,y3);
+				line(x3,y3,x1,y1);
+				line(nx1,ny1,nx2,ny2);
+				line(nx2,ny2,nx3,ny3);
+				line(nx3,ny3,nx1,ny1);
+				getch();
+				break;
+			case 4: exit(0);
+				default:
+				cleardevice();
+				printf("\n Enter the correct choice");
+		}
+		printf("\n Do you want to continue Y/N");
+		scanf("%s",&ch);
+	}
+	getch();
+	closegraph();
+}

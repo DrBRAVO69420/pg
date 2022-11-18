@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<graphics.h>
+void main(){
+	int left=225,top=50,right=425,bottom=100,i;
+	int gd=DETECT,gm;
+	int color[]={6,15,2};
+	initgraph(&gd,&gm,"C:\\TC\\BGI");
+	for(i=0;i<3;i++){
+		setfillstyle(1,color[i]);
+		bar(left,top,right,bottom);
+		top=bottom;
+		bottom+=50;
+	}
+	setfillstyle(1,1);
+	for(i=0;i<360;i+=15){
+		pieslice(325,125,i,i+15,25);
+		delay(100);
+	}
+	setfillstyle(1,1);
+	bar(215,50,225,375);
+	setfillstyle(1,1);
+	bar(125,425,325,475);
+	setfillstyle(1,9);
+	bar(175,375,275,425);
+	fillellipse(220,45,5,5);
+	getch();
+	closegraph();
+}
